@@ -12,6 +12,9 @@ yarn dev
 pnpm dev
 # or
 bun dev
+# or
+docker-compose build
+docker-compose run
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
