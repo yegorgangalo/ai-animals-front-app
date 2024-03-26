@@ -1,3 +1,34 @@
 {
-  "extends": "next/core-web-vitals"
+  "env": {
+    "es6": true
+  },
+  "plugins": ["react"],
+  "extends": ["next/core-web-vitals"], // Add "prettier" last. This will turn off eslint rules conflicting with prettier. This is not what will format our code.
+  "rules": {
+    "prefer-const": "error",
+    "no-trailing-spaces": ["error"],
+    "no-undef": ["error"],
+    // "no-unused-vars": ["warn"],
+    "no-multiple-empty-lines": ["error", { "max": 2, "maxEOF": 1 }],
+    "require-await": ["error"],
+    "comma-spacing": ["warn", { "before": false, "after": true }],
+    "key-spacing": ["error", { "beforeColon": false, "afterColon": true }],
+    "keyword-spacing": ["error"],
+    "space-before-blocks": ["error"],
+    "space-infix-ops": ["error", { "int32Hint": false }],
+    "array-element-newline": ["error", "consistent"],
+    "comma-dangle": ["error", "always-multiline"],
+    "react/prop-types": ["error"],
+    "react/jsx-boolean-value": ["error"],
+    "react/no-children-prop": ["off"],
+    "react/no-array-index-key": ["error"],
+    "jsx-quotes": ["error", "prefer-double"],
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal", "parent", "sibling", "index", "object", "type"],
+        "newlines-between": "never"
+      }
+    ]
+  }
 }
