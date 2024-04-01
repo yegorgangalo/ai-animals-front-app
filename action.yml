@@ -1,0 +1,5 @@
+# action.yml
+name: 'Run Git Server'
+description: 'Create Git Server container'
+runs:
+  using: 'node20'
