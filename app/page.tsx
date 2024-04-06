@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import Form from "../components/Form";
+import FormWrapper from '../components/FormWrapper'
 
 export const metadata: Metadata = {
   title: 'AI Animals',
@@ -7,10 +7,10 @@ export const metadata: Metadata = {
     'Generating funny ai-images of your pets',
 }
 
-const App = () => {
+const MainPage = () => {
   return (
-    <Form/>
+    <FormWrapper/>
   )
 }
 
-export default App
+export default MainPage

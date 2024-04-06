@@ -1,8 +1,8 @@
 import { NextResponse, NextRequest } from 'next/server'
 import { AxiosError } from 'axios'
 import { serverAxios } from '../../../services/axios'
-import { AiAPIResponse } from '../../../ts-utils/interface/ai-api-response.interface'
-import testImageBase64 from '../../../data/test-image-base64.json'
+// import { AiAPIResponse } from '../../../ts-utils/interface/ai-api-response.interface'
+// import testImageBase64 from '../../../data/test-image-base64.json'
 
 const aiModifyController = async (req: NextRequest) => {
   try {
@@ -20,20 +20,19 @@ const aiModifyController = async (req: NextRequest) => {
 
     console.log('User data:', { prompt, imageFile });
 
-    // const response = await serverAxios.post('/api/main', reqFormData, {
-    //   headers: {
-    //     "Content-Type": "multipart/form-data",
-    //   },
-    // })
-    // return NextResponse.json({ data: response.data, success: true })
-
-    const response = await new Promise<{ data: AiAPIResponse}>((resolve, reject ) => {
-      setTimeout(() => resolve({
-        data: {
-          processed_image: testImageBase64,
-        },
-      }), 2000)
+    const response = await serverAxios.post('/process_image', reqFormData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
     })
+
+    // const response = await new Promise<{ data: AiAPIResponse}>((resolve, reject ) => {
+    //   setTimeout(() => resolve({
+    //     data: {
+    //       processed_image: testImageBase64,
+    //     },
+    //   }), 2000)
+    // })
 
     return NextResponse.json({ data: response.data, success: true })
   } catch (error) {
