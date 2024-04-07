@@ -16,25 +16,27 @@ const SuccessModal = ({ imageData, isOpen, onClose }: SuccessModalProps) => {
           return
         }
         // Create a Blob from the base64 imageData
-        const byteCharacters = atob(imageData);
-        const byteNumbers = new Array(byteCharacters.length);
+        const byteCharacters = atob(imageData)
+        const byteNumbers = new Array(byteCharacters.length)
         for (let i = 0; i < byteCharacters.length; i++) {
-          byteNumbers[i] = byteCharacters.charCodeAt(i);
+          byteNumbers[i] = byteCharacters.charCodeAt(i)
         }
-        const byteArray = new Uint8Array(byteNumbers);
-        const blob = new Blob([byteArray], { type: 'image/jpeg' });
+        const byteArray = new Uint8Array(byteNumbers)
+        const blob = new Blob([byteArray], { type: 'image/jpeg' })
 
         // Create a URL for the Blob
-        const url = URL.createObjectURL(blob);
+        const url = URL.createObjectURL(blob)
 
         // Create an anchor element and trigger the download
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = 'ai-generated-image.jpg';
-        link.click();
+        const link = document.createElement('a')
+        link.href = url
+        link.download = 'ai-generated-image.jpg'
+        document.body.appendChild(link)
+        link.click()
 
         // Clean up
-        URL.revokeObjectURL(url);
+        URL.revokeObjectURL(url)
+        document.body.removeChild(link)
       }
 
   return (
